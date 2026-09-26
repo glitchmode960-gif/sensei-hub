@@ -1,0 +1,193 @@
+-- ============================================
+-- SENSEI HUB — MM2 + BABFT + Settings
+-- ============================================
+local Sensei = loadstring(game:HttpGet(
+    "https://raw.githubusercontent.com/glitchmode960-gif/library/main/library.lua"
+))()
+
+local win = Sensei:CreateWindow({
+    Title = "Sensei Hub",
+    SubTitle = "MM2 + BABFT",
+    ScriptFolder = "sensei_hub",
+})
+
+-- ============================================
+-- ТАБ 1: Main (настройки хаба)
+-- ============================================
+local mainTab = win:MakeTab({Title = "Main", Icon = "Home"})
+
+mainTab:AddSection("Тема")
+mainTab:AddDropdown({
+    Name = "Theme",
+    Options = Sensei:GetThemes(),
+    Default = Sensei:GetTheme().Name,
+    Flag = "theme",
+    Callback = function(v)
+        Sensei:SetTheme(v)
+    end,
+})
+
+mainTab:AddSection("Масштаб UI")
+mainTab:AddSlider({
+    Name = "Scale",
+    Min = 60, Max = 160, Increment = 5, Default = 85,
+    Flag = "ui_scale",
+    Callback = function(v)
+        Sensei:SetUIScale(v / 100)
+    end,
+})
+
+mainTab:AddSection("Инфо")
+mainTab:AddParagraph("Sensei Hub",
+    "Версия: " .. Sensei.Version .. "\n" ..
+    "Хаб: MM2 + BABFT\n" ..
+    "Powered by Wand UI"
+)
+
+mainTab:AddButton({
+    Name = "Копировать версию",
+    Callback = function()
+        setclipboard(Sensei.Version)
+        win:Notify({Title = "Copied", Content = Sensei.Version, Duration = 2})
+    end,
+})
+
+mainTab:AddButton({
+    Name = "Показать список тем",
+    Callback = function()
+        local themes = Sensei:GetThemes()
+        win:Notify({
+            Title = "Themes",
+            Content = table.concat(themes, ", "),
+            Duration = 5,
+        })
+    end,
+})
+
+mainTab:AddSection("Флаги")
+mainTab:AddButton({
+    Name = "Сбросить все флаги",
+    Callback = function()
+        win:DeleteFlags()
+        win:Notify({Title = "OK", Content = "Флаги сброшены", Duration = 3})
+    end,
+})
+
+-- ============================================
+-- ТАБ 2: MM2
+-- ============================================
+local mm2Tab = win:MakeTab({Title = "MM2", Icon = "Crosshair"})
+
+mm2Tab:AddSection("Aimbot Hubs")
+
+mm2Tab:AddButton({
+    Name = "Load Vertex Hub (Silent Aim)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.smokingscripts.org/vertex.lua"))()
+    end,
+})
+
+mm2Tab:AddButton({
+    Name = "Load ThunderHub (Aimbot)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/thunderXhub/ThunderXHUB/refs/heads/main/loader"))()
+    end,
+})
+
+mm2Tab:AddButton({
+    Name = "Load FoxName Hub (Aimbot)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xv3gasx/Murder-Mystery-2/refs/heads/main/Release.lua"))()
+    end,
+})
+
+mm2Tab:AddButton({
+    Name = "Load Znex (Silent Aim)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/znex-loader/Extended/refs/heads/main/mm2.lua"))()
+    end,
+})
+
+mm2Tab:AddSection("Farm + Aimbot")
+
+mm2Tab:AddButton({
+    Name = "Load TravHub (Farm + Aimbot)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/josiahcarterthegoat-alt/TravHubMM2/refs/heads/main/script.lua"))()
+    end,
+})
+
+mm2Tab:AddButton({
+    Name = "Load 333HUB (Farm + Aimbot)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/jugd300-sudo/333HUB/refs/heads/main/main.lua"))()
+    end,
+})
+
+mm2Tab:AddButton({
+    Name = "Load Overdrive Hub",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/aluucardd/MM2/refs/heads/main/MM2%20ZNEX%20Hub"))()
+    end,
+})
+
+-- ============================================
+-- ТАБ 3: BABFT
+-- ============================================
+local babftTab = win:MakeTab({Title = "BABFT", Icon = "Anchor"})
+
+babftTab:AddSection("Auto Farm Hubs")
+
+babftTab:AddButton({
+    Name = "Load TheRealAsu (Auto Farm)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRealAsu/BABFT/refs/heads/main/Loader.lua"))()
+    end,
+})
+
+babftTab:AddButton({
+    Name = "Load LQD911 (Farm + ESP)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/onyoumini24-lgtm/LQD911-BABF/refs/heads/main/Script2.lua"))()
+    end,
+})
+
+babftTab:AddButton({
+    Name = "Load Turtle Hub (Auto Farm)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Turtle1891/Build-A-Boat-For-Treasure---Turtle-Hub/refs/heads/main/TTH"))()
+    end,
+})
+
+babftTab:AddButton({
+    Name = "Load scarabhub (Auto Farm)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/scarabhub/buildaboatAutoFarm/refs/heads/main/main.lua"))()
+    end,
+})
+
+babftTab:AddButton({
+    Name = "Load 4479 Hub (Farm + ESP)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/4479cantcode/4479Hub/refs/heads/main/Script.lua"))()
+    end,
+})
+
+babftTab:AddSection("Info")
+babftTab:AddParagraph("BABFT",
+    "TheRealAsu — самый быстрый автофарм.\n" ..
+    "LQD911 — автофарм + ESP.\n" ..
+    "Turtle Hub — автофарм + автопилот.\n" ..
+    "4479 Hub — автофарм + ESP."
+)
+
+-- ============================================
+-- ФИНАЛ
+-- ============================================
+win:Notify({
+    Title = "Sensei Hub",
+    Content = "Табы: Main, MM2, BABFT",
+    Duration = 5,
+})
+
+win:SelectTab(1)
