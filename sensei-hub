@@ -1,5 +1,5 @@
 -- ============================================
--- SENSEI HUB — MM2 + BABFT + Settings
+-- SENSEI HUB — MM2 + BABFT + Blox Fruits + Settings
 -- ============================================
 local Sensei = loadstring(game:HttpGet(
     "https://raw.githubusercontent.com/glitchmode960-gif/library/main/library.lua"
@@ -7,7 +7,7 @@ local Sensei = loadstring(game:HttpGet(
 
 local win = Sensei:CreateWindow({
     Title = "Sensei Hub",
-    SubTitle = "MM2 + BABFT",
+    SubTitle = "MM2 + BABFT + Blox Fruits",
     ScriptFolder = "sensei_hub",
 })
 
@@ -40,7 +40,7 @@ mainTab:AddSlider({
 mainTab:AddSection("Инфо")
 mainTab:AddParagraph("Sensei Hub",
     "Версия: " .. Sensei.Version .. "\n" ..
-    "Хаб: MM2 + BABFT\n" ..
+    "Хаб: MM2 + BABFT + Blox Fruits\n" ..
     "Powered by Wand UI"
 )
 
@@ -182,11 +182,78 @@ babftTab:AddParagraph("BABFT",
 )
 
 -- ============================================
+-- ТАБ 4: Blox Fruits (НОВЫЙ)
+-- ============================================
+local bloxTab = win:MakeTab({Title = "Blox Fruits", Icon = "Fruit"})
+
+bloxTab:AddSection("Auto Farm")
+
+bloxTab:AddButton({
+    Name = "Load Redz Hub (Auto Farm)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/tlredz/Scripts/main/BloxFruits.luau"))()
+    end,
+})
+
+bloxTab:AddButton({
+    Name = "Load Cokka Hub (Auto Farm)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ShowScript79/cokkahub/refs/heads/main/cokkahub"))()
+    end,
+})
+
+bloxTab:AddButton({
+    Name = "Load SAKURA HUB (Farm + Fruit ESP)",
+    Callback = function()
+        loadstring(game:HttpGet("https://flowauth.net/v1/ui/d00ec69382de97372fc9559efc722298.lua"))()
+    end,
+})
+
+bloxTab:AddButton({
+    Name = "Load NexusHub (Auto Raid + Farm)",
+    Callback = function()
+        loadstring(game:HttpGet("https://api.tgferr.com.br/nexusproxy"))()
+    end,
+})
+
+bloxTab:AddButton({
+    Name = "Load CelestialHub (Auto Farm)",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/JellyBagBeans/CelestialHub/main/BloxFruits"))()
+    end,
+})
+
+bloxTab:AddSection("Fruit Tools")
+
+bloxTab:AddButton({
+    Name = "Load KaitunFruit (Fruit ESP + Auto Farm)",
+    Callback = function()
+        getgenv().KaitunFruit = {
+            Team = "Marines",
+            BlacklistFruits = {},
+            Webhook = { Enabled = false, Url = "" },
+            UsingHopApi = true
+        }
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/WhiteX1208/Scripts/refs/heads/main/KaitunFindFruit.luau"))()
+    end,
+})
+
+bloxTab:AddSection("Info")
+bloxTab:AddParagraph("Blox Fruits",
+    "Redz Hub — классический автофарм (уровень, квесты, боссы).\n" ..
+    "Cokka Hub — расширенный фарм (материалы, сундуки, рейды).\n" ..
+    "SAKURA HUB — автофарм + ESP фруктов.\n" ..
+    "NexusHub — полностью авторейды + морские события.\n" ..
+    "CelestialHub — стабильный автофарм уровня.\n" ..
+    "KaitunFruit — поиск и телепорт к фруктам."
+)
+
+-- ============================================
 -- ФИНАЛ
 -- ============================================
 win:Notify({
     Title = "Sensei Hub",
-    Content = "Табы: Main, MM2, BABFT",
+    Content = "Табы: Main, MM2, BABFT, Blox Fruits",
     Duration = 5,
 })
 
