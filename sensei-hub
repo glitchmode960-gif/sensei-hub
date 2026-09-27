@@ -191,7 +191,7 @@ bloxTab:AddSection("Auto Farm")
 bloxTab:AddButton({
     Name = "Load Redz Hub (Auto Farm)",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/tlredz/Scripts/main/BloxFruits.luau"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/tlredz/Scripts/refs/heads/main/main.luau"))()
     end,
 })
 
